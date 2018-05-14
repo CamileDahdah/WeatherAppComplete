@@ -33,6 +33,7 @@ import com.example.weatherapp.models.ForecastWeatherInfo;
 import com.example.weatherapp.models.ForecastWeatherItem;
 import com.example.weatherapp.models.TempInfo;
 import com.example.weatherapp.models.WeatherDescription;
+import com.example.weatherapp.models.WeatherInfoManager;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -49,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
     private WeatherApiManager weatherApiManager;
     private Double latitude, longitude;
     private LocationManager locationManager;
-
+    private WeatherInfoManager weatherInfoManager;
     private LocationListener locationListener = new LocationListener() {
         @Override
         public void onLocationChanged(Location location) {
@@ -89,6 +90,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         weatherApiManager = new WeatherApiManager();
+        weatherInfoManager = WeatherInfoManager.getInstance();
 
         if (!hasLocationPermissions()) {
             requestFineLocationPermission();
@@ -220,7 +222,8 @@ public class MainActivity extends AppCompatActivity {
         String currentTemp = String.valueOf(info.getTempInfo().getTemp());
         currentTemp = String.format(getString(R.string.current_temp), currentTemp);
         currentTemperatureTextView.setText(currentTemp);
-
+        //set temperature
+        weatherInfoManager.setCurrentWeatherTemperature(currentTemp);
         setScreenTitle(info.getCityName());
 
         if (info.getWeatherDescriptions() != null && !info.getWeatherDescriptions().isEmpty()) {
@@ -228,6 +231,9 @@ public class MainActivity extends AppCompatActivity {
 
             String weatherDescription = currentWeatherDescription.getDescription();
             weatherDescriptionTextView.setText(weatherDescription);
+
+            //set description
+            weatherInfoManager.setCurrentWeatherDescription(weatherDescription);
 
             String iconUrl = "http://openweathermap.org/img/w/" + currentWeatherDescription.getIcon() + ".png";
             Picasso.with(this).load(iconUrl).into(currentConditionImageView);

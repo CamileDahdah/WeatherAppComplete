@@ -1,0 +1,49 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="#09C"
+    android:id="@+id/widget_layout_button"
+    android:padding="@dimen/widget_margin">
+
+    <TextView
+        android:id="@+id/widget_temperature_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:contentDescription="Text 1"
+        android:text="Text 1"
+        android:textColor="#ffffff"
+        android:textSize="24sp"
+        android:textStyle="bold|italic" />
+
+    <TextView
+        android:id="@+id/widget_description_text"
+        android:layout_below="@id/widget_temperature_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@id/widget_temperature_text"
+
+
+        android:contentDescription="Text 2"
+        android:text="Text 2"
+        android:textColor="#ffffff"
+        android:textSize="14sp"
+        android:textStyle="bold|italic" />
+
+
+    <ImageView
+        android:id="@+id/widget_image"
+        android:layout_width="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/widget_temperature_text"
+        android:layout_alignTop="@id/widget_temperature_text"
+        app:srcCompat="@mipmap/ic_launcher_round"
+        android:src="@mipmap/ic_launcher"
+        />
+
+
+</RelativeLayout>
