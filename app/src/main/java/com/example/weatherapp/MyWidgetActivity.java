@@ -191,7 +191,7 @@ public class MyWidgetActivity extends AppWidgetProvider {
                 @Override
                 public void onBitmapLoaded(Bitmap bitmap, Picasso.LoadedFrom from) {
                     if(bitmap != null) {
-                        remoteViews.setBitmap(R.id.widget_image, "myBitmap", bitmap);
+                        remoteViews.setImageViewBitmap(R.id.widget_image, bitmap);
                         appWidgetManager.updateAppWidget(appWidgetId, remoteViews);
                     }
                 }
@@ -214,6 +214,10 @@ public class MyWidgetActivity extends AppWidgetProvider {
         appWidgetManager.updateAppWidget(appWidgetId, remoteViews);
     }
 
+    public void myBitMap(){
+
+
+    }
     @SuppressLint("MissingPermission")
     private static void startLocationManager(Context context) {
         locationManager = (LocationManager) context.getSystemService(Context.LOCATION_SERVICE);
