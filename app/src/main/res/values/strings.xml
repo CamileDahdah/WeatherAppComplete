@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">Weather</string>
+
+    <string name="current_temp">%1$s \u2103</string>
+    <string name="cities">Cities</string>
+</resources>
